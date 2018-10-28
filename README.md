@@ -1,0 +1,1 @@
+Simple android kotlin project. Dagger 2, rxjava, retrofit.
