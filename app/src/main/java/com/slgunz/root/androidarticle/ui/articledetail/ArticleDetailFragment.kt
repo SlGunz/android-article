@@ -13,7 +13,6 @@ import com.slgunz.root.androidarticle.di.ActivityScope
 import com.slgunz.root.androidarticle.ui.articlelist.ArticleListActivity
 import com.slgunz.root.androidarticle.utils.ActivityUtils
 import kotlinx.android.synthetic.main.article_detail_frag.*
-import kotlinx.android.synthetic.main.article_list_frag.*
 import javax.inject.Inject
 
 
@@ -23,6 +22,7 @@ constructor() : Fragment(), ArticleDetailContract.View {
 
     interface Callbacks {
         fun setArticleHeader(article: Article)
+        fun setLoadingIndicator(active: Boolean)
     }
 
     @Inject
@@ -31,7 +31,7 @@ constructor() : Fragment(), ArticleDetailContract.View {
     private var callbacks: Callbacks? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.article_list_frag, container, false)
+        return inflater.inflate(R.layout.article_detail_frag, container, false)
     }
 
     override fun onResume() {
@@ -56,7 +56,7 @@ constructor() : Fragment(), ArticleDetailContract.View {
     }
 
     override fun setLoadIndicator(active: Boolean) {
-        progressBar.visibility = if (active) View.VISIBLE else View.INVISIBLE
+        callbacks?.setLoadingIndicator(active)
     }
 
     override fun showArticle(article: Article) {

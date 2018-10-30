@@ -2,6 +2,7 @@ package com.slgunz.root.androidarticle.ui.common
 
 import android.content.Context
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -57,6 +58,7 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListen
     }
 
     fun bindViewHolder(article: Article, context: Context) {
+        this.article = article
         textViewTitle?.text = article.title
         textViewBrief?.text = ActivityUtils.stripHtml(article.content)
         // TODO: holder.textViewCreator?.text = article.creator
@@ -72,6 +74,9 @@ class ViewHolder(view: View) : RecyclerView.ViewHolder(view), View.OnClickListen
     }
 
     override fun onClick(p0: View?) {
-        article?.id?.let { onclick?.invoke(it) }
+        val id = article?.id
+        if (id != null) {
+            onclick?.invoke(id)
+        }
     }
 }

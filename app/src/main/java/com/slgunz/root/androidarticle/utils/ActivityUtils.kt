@@ -4,10 +4,8 @@ import android.graphics.drawable.Drawable
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.graphics.drawable.DrawableCompat
-import android.widget.TextView
 import android.text.Html
-
-
+import android.widget.TextView
 
 
 object ActivityUtils {
@@ -36,6 +34,7 @@ object ActivityUtils {
         return if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.N) {
             Html.fromHtml(html, Html.FROM_HTML_MODE_LEGACY).toString()
         } else {
+            @Suppress("DEPRECATION")
             Html.fromHtml(html).toString()
         }
     }

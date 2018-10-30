@@ -1,6 +1,7 @@
 package com.slgunz.root.androidarticle.ui.articledetail
 
 import android.os.Bundle
+import android.view.View
 import com.bumptech.glide.Glide
 import com.slgunz.root.androidarticle.R
 import com.slgunz.root.androidarticle.data.model.Article
@@ -35,5 +36,9 @@ class ArticleDetailActivity : BaseActivity(), ArticleDetailFragment.Callbacks {
         Glide.with(this).load(article.previewImage).into(imageView_article)
         // TODO: textView_creator.text = article.creator
         textView_pubDate.text = article.pubDate
+    }
+
+    override fun setLoadingIndicator(active: Boolean) {
+        progressBar.visibility = if (active) View.VISIBLE else View.INVISIBLE
     }
 }
