@@ -45,7 +45,7 @@ dependencies {
     implementation "com.google.dagger:dagger:$daggerVersion"
     kapt "com.google.dagger:dagger-compiler:$daggerVersion"
     // rxjava
-    implementation 'io.reactivex.rxjava2:rxjava:2.1.17'
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.3'
     implementation 'io.reactivex.rxjava2:rxandroid:2.0.2'
     // retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofitVersion"
@@ -55,4 +55,8 @@ dependencies {
     implementation "com.github.bumptech.glide:glide:$glideVersion"
     implementation "com.github.bumptech.glide:annotations:$glideVersion"
     kapt "com.github.bumptech.glide:compiler:$glideVersion"
+    //
+    implementation "com.squareup.sqlbrite2:sqlbrite:2.0.0"
+    // okhttp
+    implementation 'com.squareup.okhttp3:okhttp:3.11.0'
 }

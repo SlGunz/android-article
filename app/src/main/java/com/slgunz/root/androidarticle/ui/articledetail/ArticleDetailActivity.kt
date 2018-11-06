@@ -8,7 +8,6 @@ import com.slgunz.root.androidarticle.data.model.Article
 import com.slgunz.root.androidarticle.ui.base.BaseActivity
 import com.slgunz.root.androidarticle.utils.ActivityUtils
 import kotlinx.android.synthetic.main.article_detail_act.*
-import kotlinx.android.synthetic.main.article_detail_toolbar.*
 import javax.inject.Inject
 
 class ArticleDetailActivity : BaseActivity(), ArticleDetailFragment.Callbacks {
@@ -32,10 +31,8 @@ class ArticleDetailActivity : BaseActivity(), ArticleDetailFragment.Callbacks {
     }
 
     override fun setArticleHeader(article: Article) {
-        textView_title.text = article.title
+        toolbar_layout.title = article.title
         Glide.with(this).load(article.previewImage).into(imageView_article)
-        // TODO: textView_creator.text = article.creator
-        textView_pubDate.text = article.pubDate
     }
 
     override fun setLoadingIndicator(active: Boolean) {

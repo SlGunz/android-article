@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.slgunz.root.androidarticle.R
 import com.slgunz.root.androidarticle.data.model.Article
 import com.slgunz.root.androidarticle.di.ActivityScope

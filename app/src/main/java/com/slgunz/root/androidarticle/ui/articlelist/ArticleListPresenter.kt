@@ -34,14 +34,12 @@ constructor(var dataManager: ArticleDataManager, val scheduler: BaseSchedulerPro
     private fun loadArticles(view: ArticleListContract.View) {
         view.setLoadIndicator(true)
         val disposable = dataManager.getArticles()
-            ?.subscribeOn(scheduler.io())
-            ?.observeOn(scheduler.ui())
-            ?.subscribe(
+            .subscribeOn(scheduler.io())
+            .observeOn(scheduler.ui())
+            .subscribe(
                 // onSuccess
-                { articles: MutableList<Article>? ->
-                    if (articles != null) {
-                        view.showArticles(articles.toList())
-                    }
+                { articles: MutableList<Article> ->
+                    view.showArticles(articles.toList())
                     view.setLoadIndicator(false)
                 },
                 // onError

@@ -13,7 +13,10 @@ class ArticleApplication : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        DaggerAppComponent.create().inject(this)
+        val appComponent = DaggerAppComponent.builder()
+            .application(this)
+            .build()
+        appComponent.inject(this)
     }
 
     fun componentBuilder(aClass: Class<out Activity>): AndroidComponent.Builder<*>? {

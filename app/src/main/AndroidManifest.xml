@@ -8,7 +8,7 @@
 
     <application
         android:name=".ArticleApplication"
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -18,7 +18,7 @@
         <activity
             android:name=".ui.articlelist.ArticleListActivity"
             android:label="Article"
-            android:theme="@style/AppTheme.NoActionBar">
+            android:theme="@style/AppTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -28,7 +28,11 @@
         <activity
             android:name=".ui.articledetail.ArticleDetailActivity"
             android:label="@string/title_activity_article_detail"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.TransparentSystemBar">
+            <meta-data
+                    android:name="android.support.PARENT_ACTIVITY"
+                    android:value=".ui.articlelist.ArticleListActivity"/>
+        </activity>
     </application>
 
 </manifest>

@@ -8,5 +8,5 @@ data class Article(
     @SerializedName("preview_image") val previewImage: String,
     @SerializedName("content") val content: String,
     @SerializedName("pub_date") val pubDate: String,
-    @SerializedName("creator") val creator: Int
+    @SerializedName("creator") val creator: String
 )
