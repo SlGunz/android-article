@@ -5,6 +5,8 @@
     android:id="@+id/recycleViewArticles"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingLeft="@dimen/HorizontalPadding_single"
+    android:paddingRight="@dimen/HorizontalPadding_single"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:listitem="@layout/article_list_item" />
 

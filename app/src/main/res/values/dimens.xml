@@ -2,4 +2,6 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="AppBarHeight_normal">180dp</dimen>
+    <dimen name="HorizontalPadding_double">16dp</dimen>
+    <dimen name="HorizontalPadding_single">8dp</dimen>
 </resources>

@@ -10,10 +10,16 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:windowBackground">@color/mercury</item>
     </style>
 
-    <style name="Toolbar" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+    <style name="Toolbar" parent="ThemeOverlay.AppCompat.ActionBar" />
 
-    <style name="ToolbarPopup" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="ToolbarPopup" parent="ThemeOverlay.AppCompat" />
+
+    <style name="WhiteCardView" parent="CardView.Light">
+        <item name="cardElevation">4dp</item>
+        <item name="cardUseCompatPadding">true</item>
+    </style>
 
 </resources>
