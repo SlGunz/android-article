@@ -10,11 +10,17 @@ import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.slgunz.root.androidarticle.R
 import com.slgunz.root.androidarticle.data.model.Article
+import com.slgunz.root.androidarticle.di.ActivityScope
 import com.slgunz.root.androidarticle.utils.ActivityUtils
 import kotlinx.android.synthetic.main.article_list_item.view.*
+import javax.inject.Inject
 
-class ArticleAdapter(private val articles: MutableList<Article>, private val context: Context) :
+@ActivityScope
+
+class ArticleAdapter @Inject constructor(private val context: Context) :
     RecyclerView.Adapter<ViewHolder>() {
+
+    private val articles: MutableList<Article> = mutableListOf()
 
     var onclick: ((Int) -> Unit)? = null
 

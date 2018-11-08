@@ -26,14 +26,14 @@ constructor() : Fragment(), ArticleListContract.View {
 
     @Inject
     lateinit var presenter: ArticleListContract.Presenter
-
-    lateinit var adapter: ArticleAdapter
+    @Inject
+    lateinit var articleAdapterProvider: dagger.Lazy<ArticleAdapter>
 
     private var callbacks: Callbacks? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val root = inflater.inflate(R.layout.article_list_frag, container, false)
-        adapter = ArticleAdapter(mutableListOf(), context!!.applicationContext)
+        val adapter = articleAdapterProvider.get()
         root.recycleViewArticles.layoutManager = LinearLayoutManager(context!!)
         root.recycleViewArticles.adapter = adapter
         adapter.onclick = presenter::openArticleDetail
@@ -83,7 +83,7 @@ constructor() : Fragment(), ArticleListContract.View {
     }
 
     override fun showArticles(articles: List<Article>) {
-        adapter.setList(articles)
+        articleAdapterProvider.get().setList(articles)
     }
 
     override fun showArticleDetail() {
