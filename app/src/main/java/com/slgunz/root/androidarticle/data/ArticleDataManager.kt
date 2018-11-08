@@ -18,7 +18,7 @@ class ArticleDataManager @Inject constructor(
     private var errorMessage: String? = null
 
     private val cachedArticles: MutableMap<Int, Article> = mutableMapOf()
-    private var needToUpdate: Boolean = true
+    private var needToUpdate: Boolean = false
 
     fun getArticles(): Single<MutableList<Article>> {
         if (!needToUpdate && !cachedArticles.isEmpty()) {
@@ -104,5 +104,9 @@ class ArticleDataManager @Inject constructor(
         val message = errorMessage
         errorMessage = null
         return message
+    }
+
+    fun requireRemoteUpdate() {
+        needToUpdate = true
     }
 }

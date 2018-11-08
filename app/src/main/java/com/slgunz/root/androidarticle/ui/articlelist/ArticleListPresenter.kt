@@ -24,28 +24,28 @@ constructor(var dataManager: ArticleDataManager, val scheduler: BaseSchedulerPro
     override fun subscribe(view: ArticleListContract.View) {
         this.view = view
         activityDetailException(dataManager.getErrorMessage())
-        loadArticles(view)
+        loadArticles()
     }
 
     override fun unsubscribe() {
         disposableList.dispose()
     }
 
-    private fun loadArticles(view: ArticleListContract.View) {
-        view.setLoadIndicator(true)
+    private fun loadArticles() {
+        view?.setLoadIndicator(true)
         val disposable = dataManager.getArticles()
             .subscribeOn(scheduler.io())
             .observeOn(scheduler.ui())
             .subscribe(
                 // onSuccess
                 { articles: MutableList<Article> ->
-                    view.showArticles(articles.toList())
-                    view.setLoadIndicator(false)
+                    view?.showArticles(articles.toList())
+                    view?.setLoadIndicator(false)
                 },
                 // onError
                 { throwable: Throwable? ->
                     articlesException(throwable)
-                    view.setLoadIndicator(false)
+                    view?.setLoadIndicator(false)
                 })
 
         if (disposable != null) {
@@ -61,6 +61,11 @@ constructor(var dataManager: ArticleDataManager, val scheduler: BaseSchedulerPro
         if (message != null) {
             view?.showErrorMessage(message)
         }
+    }
+
+    override fun updateArticles() {
+        dataManager.requireRemoteUpdate()
+        loadArticles()
     }
 
     @VisibleForTesting

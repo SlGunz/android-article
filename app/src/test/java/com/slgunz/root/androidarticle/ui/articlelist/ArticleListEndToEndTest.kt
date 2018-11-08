@@ -42,6 +42,7 @@ class ArticleListEndToEndTest {
     @Test
     fun whenActivityBecomesVisible_thenGetArticles() {
         whenever(dataManager.getArticles()).thenReturn(Single.just(articles))
+        presenter.setView(view)
 
         presenter.subscribe(view)
         verify(view).setLoadIndicator(true)
@@ -77,6 +78,18 @@ class ArticleListEndToEndTest {
         verify(dataManager).getArticles()
         verify(view).showErrorMessage(error)
         verify(view).setLoadIndicator(false)
+    }
+
+    @Test fun whenPressRefreshMenuItem_thenUpdateArticlesList(){
+        whenever(dataManager.getArticles()).thenReturn(Single.just(articles))
+        presenter.setView(view)
+
+        presenter.updateArticles()
+        verify(view).setLoadIndicator(true)
+        verify(dataManager).requireRemoteUpdate()
+        verify(view).showArticles(articles)
+        verify(view).setLoadIndicator(false)
+
     }
 
 }

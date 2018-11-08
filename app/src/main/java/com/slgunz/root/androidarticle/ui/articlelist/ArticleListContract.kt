@@ -14,5 +14,6 @@ interface ArticleListContract {
         fun openArticleDetail(articleId: Int)
         fun subscribe(view: View)
         fun unsubscribe()
+        fun updateArticles()
     }
 }

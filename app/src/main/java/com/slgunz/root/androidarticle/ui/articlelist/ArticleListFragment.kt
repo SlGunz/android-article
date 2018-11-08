@@ -5,9 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.support.v4.app.Fragment
 import android.support.v7.widget.LinearLayoutManager
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import com.slgunz.root.androidarticle.R
 import com.slgunz.root.androidarticle.data.model.Article
@@ -39,7 +37,24 @@ constructor() : Fragment(), ArticleListContract.View {
         root.recycleViewArticles.layoutManager = LinearLayoutManager(context!!)
         root.recycleViewArticles.adapter = adapter
         adapter.onclick = presenter::openArticleDetail
+
+        setHasOptionsMenu(true)
         return root
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.activity_list_toolbar_menu, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem?): Boolean = when (item?.itemId) {
+        R.id.action_refresh -> {
+            presenter.updateArticles()
+            true
+        }
+        else -> {
+            super.onOptionsItemSelected(item)
+        }
     }
 
     override fun onResume() {
